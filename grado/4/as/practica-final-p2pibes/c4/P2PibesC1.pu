@@ -1,0 +1,12 @@
+@startuml P2PibesC1
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+System_Ext(cliente, "Cliente", "Quere facer uso da rede")
+
+System(sistema, "Mantén unha serie de estados (nodos) a fin de xestionar a subida, busca e borrado de ficheiros distribuidos", "P2Pibes")
+
+Rel(cliente, sistema, "Envía", "petición")
+
+Rel(sistema, cliente, "Devolve", "resposta")
+
+@enduml

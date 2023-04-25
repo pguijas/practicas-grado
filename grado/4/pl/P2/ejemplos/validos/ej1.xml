@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lista de tareas -->
+<nota>
+    <id>1</id> 
+    <autor>Yo</autor>
+    <titulo>PL. Importante</titulo>
+    <fecha>25/10/2021 15:00</fecha>
+    <descripcion>No olvidar las prácticas de PL!</descripcion>
+</nota>

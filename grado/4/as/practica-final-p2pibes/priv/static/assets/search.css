@@ -1,0 +1,97 @@
+
+#buuts{
+  float: left;
+
+}
+
+.centrado{
+  background: #BA68C8;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  margin-top: 7%;
+  height: 500px;
+  width: 100%;
+  padding: 3%;
+}
+
+.searchinput{
+  width: 500px;
+  float: right;
+}
+
+.searchPath{
+  background-color: whitesmoke;
+  border: none;
+  height: 49px;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.form-search {
+  width: 100%;
+  height: 90%;
+  padding: 5px;
+  margin: 20px auto;
+  overflow-y: scroll;
+  border-radius: 10px;
+  height: 375px;
+
+}
+    
+.form-search::-webkit-scrollbar{
+  background-color: rgba(0,0,0,0.0.1);
+}
+
+.not_found{
+  text-align: center;
+  margin-top: 10%;
+  color: white;
+  font-size: 20px;
+}
+    
+    
+.filename{
+  color: white;
+  margin-top: 20px;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.namesize{
+  text-align: left;
+}
+
+.size{
+  color: rgba(255, 255, 255,0.5);
+  font-size: 15px;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.hash{
+  color: rgba(255, 255, 255,0.5);
+  font-size: 15px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+
+.izquierda{
+  float: left;
+}
+.derecha{
+  margin: 20px;
+  float: right;
+}
+ 
+.node{
+  display: block;
+  color: rgba(255, 255, 255,0.5);
+}
+
+.item:hover{
+  background-color: rgba(255, 255, 255, 0.05);
+}
+#serch{
+  margin-left: 100px;
+}

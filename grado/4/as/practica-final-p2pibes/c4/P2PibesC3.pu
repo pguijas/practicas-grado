@@ -1,0 +1,42 @@
+@startuml P2PibesC3
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+System_Ext(cliente, "Cliente", "Quere facer uso da rede")
+
+Boundary(interface, "Interface") {
+
+   Component(endpoint, "Endpoint", "Phoenix Endpoint", "Establece a conexión")
+
+   Boundary(controllers, "Controllers") {
+      Component(index_controller, "Index Controller", "Phoenix Controller", "Manexa eventos e estados da vista")
+      Component(node_controller, "Node Controller", "Phoenix Controller", "Manexa eventos e estados da vista")
+   }
+
+   Boundary(views, "Views") {
+      Component(index_view, "Index View", "Phoenix View", "Renderiza o heex a HTML")
+      Component(node_view, "Node View", "Phoenix View", "Renderiza o heex a HTML")
+   }
+
+   Boundary(templates, "Templates") {
+      Component(index_template, "Index Template", "Phoenix heex", "Establece a conexión")
+      Component(node_template, "Node Template", "Phoenix heex", "Establece a conexión")
+   }
+}
+
+Component(node_register, "NodeRegister", "Agent", "Xestiona o rexistro de nodos")
+Component(p2pibes, "P2Pibes", "GenServer", "Implementa o estado e a lóxica de negocio")
+
+Rel(cliente, endpoint, "Accede á rede", "HTTPS")
+Rel(endpoint, controllers, "Rutea a", "router.ex")
+Rel(controllers, views, "Renderiza HTML con", "Elixir")
+Rel(views, templates, "Baseado en estados", "Elixir")
+
+Rel(p2pibes, node_register, " ", "uses")
+
+Rel(controllers, p2pibes, "Comunica accións e peticións", "Elixir")
+Rel(p2pibes, controllers, "Devolve actualizacións", "Elixir")
+
+Rel(controllers, cliente, "Envía HTML renderizado", "WebSocket")
+Rel(cliente, controllers, "Procesa eventos", "WebSocket")
+
+@enduml

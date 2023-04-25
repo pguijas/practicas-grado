@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lista de notas -->
+<notas>
+    <pedro>10</pedro>    
+    <hector>5</hector>    
+    <eliseo>4</eliseo>    
+    <arturo>-1</arturo>    
+</notas>

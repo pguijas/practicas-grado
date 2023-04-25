@@ -1,0 +1,31 @@
+@startuml P2PibesC2
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+System_Ext(cliente, "Cliente", "Quere facer uso da rede")
+
+System_Boundary(sistema, "Sistema peer-to-peer") {
+   
+   Container_Boundary(nodo1, "Nodo 1") {
+      Component(peer1, "Peer P1", "GenServer", "Recibe unha petición e procésaa comunicándose cos demais nodos se procede")
+   }
+   Container_Boundary(nodo2, "Nodo 2") {
+      Component(peer2, "Peer P2", "GenServer", "Recibe unha petición e procésaa comunicándose cos demais nodos se procede")
+   }
+   Container_Boundary(nodo3, "Nodo 3") {
+      Component(peer3, "Peer P3", "GenServer", "Recibe unha petición e procésaa comunicándose cos demais nodos se procede")
+   }  
+}
+
+Rel(cliente, peer1, "Envía", "petición")
+Rel(peer1, cliente, "Devolve", "resposta")
+
+Rel(peer1, peer2, "Comunica")
+Rel(peer2, peer1, "Comunica")
+
+Rel(peer1, peer3, "Comunica")
+Rel(peer3, peer1, "Comunica")
+
+Rel(peer2, peer3, "Comunica")
+Rel(peer3, peer2, "Comunica")
+
+@enduml

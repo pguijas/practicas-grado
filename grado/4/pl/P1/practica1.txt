@@ -1,0 +1,27 @@
+En esta práctica 1 se pide crear un analizador de texto estadístico en flex. Dado que el enunciado deja a interpretación de uno mismo algunos apartados,
+voy a repasar brevemente cuales son los elementos que mi analizador tiene en cuenta:
+    
+    -El número total de palabras:  
+        Una palabra será una secuancia de caracteres en las que no se encuentre un delimitador.
+    
+    -El número de palabras en mayúscula: 
+        Las palabras en mayúscula serán las que contengan única y exclusivamente caracteres en mayúscula, 
+         como nuestro idioma es el español los caracteres en mayúscula serán de la A a la Z (incluyendo la Ñ) 
+         y como extra tendremos en cuenta las vocales mayúsculas acentuadas.
+
+    -El número de palabras en minúscula: 
+        mismo razonamiento que para las mayúsculas
+
+    -El número de palabras numéricas: 
+        Dado que es extremadamente usual introducir números con decimales y con signo he decidido contemplarlos a mallores en 
+         lo que llamaremos "palabras numéricas".
+
+    -El número de frases: 
+        Se contará una frase cuando inmediatamente después de una palabra venga un punto. Esto es debido a que la forma correcta de
+         puntuar es poniendo inmediatamente después de la palabra el punto, y que si se encuentra un punto en otro contexto no tendrá 
+         ese significado mas que el de un simple caracter.
+
+    -El número de caracteres:
+        Todos los caracteres que no sean delimitadores.
+
+Por último, si se quiere compilar y ejecutar (con ej.txt) esta práctica desde un sistema operativo Linux, podrá hacerse cómodamente con un "make all" o bien con "make compile_linux" y "make run".

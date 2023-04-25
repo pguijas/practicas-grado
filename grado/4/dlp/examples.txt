@@ -1,0 +1,80 @@
+true;;
+let x = true in x;;
+if false then true else false;;
+0;;
+succ (succ (succ 0));;
+3;;
+succ (pred 0);;
+iszero (pred (succ (succ 0)));;
+if iszero 3 then 0 else 1;;
+let id = Lx: Nat .x in id 3;;
+let id_bool = L x:Bool. x in id_bool true;;
+id_nat = L x:Nat. x;;
+let id_nat = L x:Nat. x in id_nat 5;;
+let x = 5 in let id_nat = L x:Nat. x in id_nat x;;
+
+{(L x:Bool .x), true};;
+{(L x:Bool .x)false, true};;
+{(L x:Bool .x)false, (L x:Bool .x)true}.1;;
+{(L x:Bool .x)false, (L x:Bool .x)true}.2;;
+{succ(succ(0)), (if (iszero 0) then 1 else succ (1))};;
+a = (L x: Nat*Bool .x){succ(succ(0)), iszero(succ(0))};;
+a.1;;
+(L x:Bool .x) ({true, false}.1);;
+id_pair = L x:Nat*Nat. x;;
+(id_pair {1,2}).1;;
+
+"Strings";;
+a = "hola graña, espero que no te aburras";;
+str_id = (L x:String .x);;
+(str_id a)^(str_id a);;
+
+"Listas";;
+nil[Nat];;
+id = L x:Nat. x;;
+a=1;;
+lista = (cons[Nat] (id 1) (cons[Nat] (id 2) (cons[Nat] (id a) (nil[Nat]))));;
+letrec len : (Nat list) -> Nat = lambda l : Nat list. if (isnil[Nat] l) then 0 else (succ (len (tail[Nat] l)))
+in len lista;;
+lst = cons[Nat] 1 (cons[Nat] 2 (cons[Nat] 3 (cons[Nat] 4 (nil[Nat]))));;
+f = lambda x:Nat . succ x;;
+letrec map : (Nat list) -> (Nat -> Nat) -> Nat list =
+lambda lst: Nat list. lambda f: (Nat -> Nat). 
+        if (isnil[Nat] (tail[Nat] lst)) then
+                cons[Nat] (f (head[Nat] lst)) (nil[Nat])
+        else
+                cons[Nat] (f (head[Nat] lst)) (map (tail[Nat] lst) f)
+in map lst f;;
+
+"Fix";;
+"Multiplicacion";;
+letrec sum : Nat -> Nat -> Nat =                                      
+lambda n : Nat. lambda m : Nat. if iszero n then m else succ (sum (pred n) m) in
+letrec mult : Nat -> Nat -> Nat =
+lambda n : Nat. lambda m : Nat. if iszero n then 0 else sum (mult (pred n) m) m in
+mult 2 3;;
+"Fibonacci:";;
+letrec sum : Nat -> Nat -> Nat =                                      
+        lambda n : Nat. lambda m : Nat. if iszero n then m else succ (sum (pred n) m) in
+        letrec fib : Nat -> Nat =
+                lambda n : Nat. if iszero n then 0 else if iszero (pred n) then 1 else
+                sum (fib (pred (pred n))) (fib (pred n))
+                in fib 4;;
+
+
+"Records:";;
+a=false;;
+pairaizer = L x:Nat. {x,x};;
+reg = {lol=pairaizer 3, xd=pairaizer (succ 3), wtf=a};;
+reg.xd;;
+id_reg = L x:{lol:(Nat * Nat), xd:(Nat * Nat), wtf:Bool}. x;;
+id_reg reg;;
+(L x:Nat .{lol=x, xd=x}) 3;;
+
+"Subtyping:";;
+let idr = lambda r:{}. r in idr {x=0, y=1};;
+(lambda r:{x:Nat}. r.x) {x=0, y=1};;
+a = {x=1, y=1, z={x=1}};;
+b = {x=1, y=1, z=a};;
+(lambda r:{z:{x:Nat}}. (r.z).x) b;; (mejorar prints xq no se respeta sacando los parentesis en la evaluación)
+(lambda r:{z:{x:Nat}}. (r.z).x) a;;

@@ -1,0 +1,23 @@
+.back{
+  padding: 10px;
+  margin-left: -90%;
+}
+
+.form-menu {
+  height: 65%;
+  padding: 100px;
+}
+
+.centrado{
+  background: #BA68C8;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  margin-top: 7%;
+  height: 75%;
+  width: 100%;
+  padding: 3%;
+}
+
+h1{
+  color: whitesmoke;
+}

@@ -1,0 +1,17 @@
+En esta práctica, se ha desarrollado un validador estandar y básico de XML, en concreto, he usado https://jsonformatter.org/xml-viewer para 
+poder comprobar como se comporta un validador en algunas situaciones poco habituales.
+
+Dicho esto, comencemos con comentar brevemente lo que mi validador reconoce y nombraremos algunos los ejemplos representativos que hemos usado para validar 
+el correcto funcionamiento:
+    -1: Un documento debe tener cabecera (los atributos usaran " y no ' y la version y el encoding son obligatorios), esta debe estar al principio del documento.
+        Ej: fallos/cabecera_no_1.xml  ; fallos/cabecera_incorrecta.xml ; fallos/no_cabecera.xml
+    -2: Un id es correcto si esta compuesto por letas (a-z/A-Z), números y - o _, pero solo podrá comenzar por letras o _.
+        Ej: fallos/id_incorrecto.xml
+    -3: Cada vez que se abra una etiqueta (sin atributos) debe haber otra que la cierre con el mismo id.
+        Ej: fallos/ej2.xml ; fallos/closes.xml ; fallos/opens.xml ; validos/ej1.xml ;
+    -4: Podrá haber comentarios por todos lados (a excepcion de antes de una cabecera).
+        Ej: válidos/texto_comentarios.xml
+    -5: Los distintos elementos del documento deben encontrarse siempre dentro de un nodo raiz (y dentro de este puede haber listas de elementos o elementos). Pudiento este no existir si es un XML vacío.
+        Ej: válidos/vacio.xml ; fallos/texto_antes.xml
+
+Por último, si se quiere compilar y ejecutar (con prueba.xml) esta práctica desde un sistema operativo Linux, podrá hacerse cómodamente con un "make all" o bien con "make compile_linux" y "make run".

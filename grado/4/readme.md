@@ -2,11 +2,11 @@
 
 Último año del grado. Las asignaturas cursadas son:
 
-* **Diseño de los Lenguajes de Programación**
-* **Computación Gráfica y Visualización**
-* **Procesamiento de Lenguajes**
-* **Visión Artificial**
-* **Arquitectura del Software**
+* **[Diseño de los Lenguajes de Programación](dlp)**
+* **[Computación Gráfica y Visualización](cgv)**
+* **[Procesamiento de Lenguajes](pl)**
+* **[Visión Artificial](va)**
+* **[Arquitectura del Software](as)**
 * **Prácticas en Empresa**
-* **Entornos inmersivos, interactivos y de entretenimiento**
-* **Trabajo Fin de Grado: p2pfl**
+* **[Entornos inmersivos, interactivos y de entretenimiento](ciie)**
+* **[Trabajo Fin de Grado: p2pfl](tfg)**
