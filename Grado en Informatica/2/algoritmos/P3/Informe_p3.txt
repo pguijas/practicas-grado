@@ -1,0 +1,93 @@
+Título: Informe sobre práctica 3 de Algoritmos.
+
+Autores:
+	PEDRO GUIJAS BRAVO: p.guijas
+	EDUARDO PÉREZ FRAGUELA: eduardo.perez.fraguela
+
+Grupo: 3.3
+
+Fecha: 19/11/2019
+
+Introducción:
+  En este informe trataremos la práctica P3 de la asignatura de Algoritmos. Dicha práctica consiste en la elaboración de operaciones sobre montículos y ordenación por montículos. 
+  Una vez implementados los algoritmos, comprobamos que funcionasen y realizamos un breve análisis del rendimiento.
+  Para comprobar que funcionen creamos la funcionón test, en dicho test probamos el funcionamiento de los algoritmos ayudandonos con una función externa ordenado(nos dice si se encuentra ordenado) y esMonticulo(indica si un vector es montículo). Lo testeamos con inicialización de un vector descendente y aleatorio
+
+Máquina:
+  Nombre: MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)
+  Procesador: Intel Core i5 2,3 GHz 
+  Memoria: 8 GB 2133 MHz LPDDR3
+  Gráficos: Intel Iris Plus Graphics 640 1536 MB
+  Sistema: macOS Catalina 10.15
+
+Para demostrar empíricamente la complejidad de crear montículo mediremos los tiempos y dividiremos los tiempos obtenidos con un vector de n elementos por su complejidad teórica (O(n)), de manera que si esta sucesión de divisiones tiende a ser estable el divisor será su complejidad.
+
+Para el análisis ejecutamos los algoritmos con vectores de 500, 1000, 2000, 4000, 8000, 16000 y 32000 (7 mediciones, el doble que el anterior) elementos en orden ascendente, descendente y aleatorio. Medimos los tiempos de ejecución y hacemos una tabla (ejecutamos 3 veces para que sean resultados más estables), los tiempos están medidos en microsegundos (ms).
+
+Como podremos observar, t(n)/(Cota subestimada) tiende al infinito, t(n)/(Cota ajustada) tiene a una constante y t(n)/Cota sobreestimada tiende a 0.
+Cuando la medición es menor de 500 ms, al ser más pequeña que el umbral realizamos 1000 veces esa operación y hayamos la media, para que sea más precisa y tienda a ser más estable. (Cuando se realiza esto aparece un (*))
+
+Creacion de un monticulo
+              n           t(n)   t(n)/n^0.90    t(n)/n^1.00    t(n)/n^1.10
+      (*)   500          9.232       0.034373       0.018464       0.009918
+      (*)  1000         18.316       0.036545       0.018316       0.009180
+      (*)  2000         35.863       0.038346       0.017931       0.008385
+      (*)  4000         70.544       0.040421       0.017636       0.007695
+      (*)  8000        139.936       0.042968       0.017492       0.007121
+      (*) 16000        279.842       0.046047       0.017490       0.006643
+          32000        561.000       0.049468       0.017531       0.006213
+Cota subestimada: n^0.90
+Cota ajustada: n 
+Cota sobreestimada: n^1.10
+t(n)/n tiende a la constante a 0.017490 aproximadamente
+(despreciamos los 0.018 porque a medida que aumenta n aumenta la estabilidad del tiempo)
+
+Efectivamente, al dividir por n y el resultado aproximarse a una constante justificamos que la complejidad de crear montículo es lineal (O(n)).
+
+Ordenacion por monticulos con inicializacion ascendente:
+              n           t(n)         t(n)/n     t(n)/nlogn     t(n)/n^1.2
+      (*)   500         38.445       0.076890       0.012372       0.022186
+      (*)  1000         93.931       0.093931       0.013598       0.023594
+      (*)  2000        212.331       0.106165       0.013967       0.023215
+      (*)  4000        448.355       0.112089       0.013514       0.021338
+           8000        968.000       0.121000       0.013464       0.020052
+          16000       2036.000       0.127250       0.013145       0.018358
+          32000       4294.000       0.134187       0.012936       0.016853
+Cota subestimada: n
+Cota ajustada: nlogn
+Cota sobreestimada: n^1.2
+t(n)/nlogn tiende a la constante que se encuentra en el intervalo [0.012936,0.013967] aproximadamente
+
+Ordenacion por monticulos con inicializacion descendente:
+              n           t(n)         t(n)/n     t(n)/nlogn     t(n)/n^1.2
+      (*)   500         39.728       0.079456       0.012785       0.022926
+      (*)  1000         96.882       0.096882       0.014025       0.024336
+      (*)  2000        214.139       0.107070       0.014086       0.023413
+      (*)  4000        460.841       0.115210       0.013891       0.021932
+           8000        982.000       0.122750       0.013658       0.020342
+          16000       2058.000       0.128625       0.013287       0.018557
+          32000       4324.000       0.135125       0.013026       0.016971
+Cota subestimada: n
+Cota ajustada: nlogn
+Cota sobreestimada: n^1.2
+t(n)/nlogn tiende a la constante que se encuentra en el intervalo [0.013026,0.013891] aproximadamente
+(volvemos a despreciar los primeros)
+
+Ordenacion por monticulos con inicializacion aleatoria:
+              n           t(n)         t(n)/n     t(n)/nlogn     t(n)/n^1.2
+      (*)   500         54.842       0.109684       0.017649       0.031648
+      (*)  1000        121.299       0.121299       0.017560       0.030469
+      (*)  2000        263.305       0.131653       0.017321       0.028789
+           4000        575.000       0.143750       0.017332       0.027365
+           8000       1231.000       0.153875       0.017122       0.025501
+          16000       2739.000       0.171187       0.017684       0.024697
+          32000       5685.000       0.177656       0.017126       0.022313
+Cota subestimada: n
+Cota ajustada: nlogn
+Cota sobreestimada: n^1.2
+t(n)/nlogn tiende a la constante 0.017332 aproximadamente
+
+Conclusión:
+  Podemos concluir afirmando que la ordenación por montículos es bastante veloz. Tiempos de ejecución muy similares a ordenación por shell en vectores aleatorios, con la diferencia de que no hay tanta diferencia entre cuando el vector es aleatorio o esta ordenado (creciente o decrecientemente), diríamos que tarda demasiado para ordenar un vector ya ordenado. 
+  Los tiempos de ordenación de un vector ascendente y descendente son muy similares, los cuales son un poquito mas bajos que los del vector aleatorio. Esto se debe a que la complegidad es la misma hasta para el peor caso (nlogn).
+

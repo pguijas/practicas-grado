@@ -1,0 +1,66 @@
+Título: Informe sobre práctica 1.
+
+Autores:
+	PEDRO GUIJAS BRAVO: p.guijas
+	EDUARDO PÉREZ FRAGUELA: eduardo.perez.fraguela
+
+Grupo: 3.3
+
+Fecha: 8/10/2019
+
+Máquina:
+	Nombre: MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)
+	Procesador: Intel Core i5 2,3 GHz 
+	Memoria: 8 GB 2133 MHz LPDDR3
+	Gráficos: Intel Iris Plus Graphics 640 1536 MB
+	Sistema: macOS Mojave 10.14.6
+
+En este informe trataremos la práctica P1 de la asignatura de Algoritmos. Dicha práctica 
+consiste en la elaboración de 2 algoritmos que buscan la subsecuencia máxima que mas suma de un array. 
+Dichos algoritmos fueron entregados en pseudocódigo, nosotros los pasamos a C, comprobamos que funcionasen 
+y realizamos un breve análisis del rendimiento.
+
+Para comprobar que funcionasen creamos las funciones test las cuales usan el algoritmo y podemos saber 
+fácilmente si dicho algoritmo hace correctamente su funcionamiento. Test1 usa números estáticos y Test2 
+usa números aleatorios.
+
+Y para finalizar ejecutamos los 2 algoritmos con vectores de 500, 1000, 2000, 4000, 8000, 16000 y 32000 
+(7 mediciones, el doble que el anterior) elementos, medimos los tiempos de ejecución y hacemos una tabla.
+Los tiempos están medidos en milisegundos (ms).
+
+SumaSubMax 1
+              n           t(n)     t(n)/n^1.8       t(n)/n^2     t(n)/n^2.2
+      (*)   500        261.800       0.003629       0.001047       0.000302
+           1000       1045.000       0.004160       0.001045       0.000262
+           2000       4131.000       0.004723       0.001033       0.000226
+           4000      16422.000       0.005392       0.001026       0.000195
+           8000      66422.000       0.006263       0.001038       0.000172
+          16000     267188.000       0.007234       0.001044       0.000151
+          32000    1068522.000       0.008308       0.001043       0.000131
+
+Cota subestimada: n^1.8
+Cota ajustada: n^2
+Cota sobreestimada: n^2.2
+
+SumaSubMax 2
+              n           t(n)    t(n)/n^0.74    t(n)/n^0.94    t(n)/n^1.14
+      (*)   500          2.008       0.020208       0.005831       0.001682
+      (*)  1000          3.633       0.021891       0.005499       0.001381
+      (*)  2000          6.410       0.023126       0.005057       0.001106
+      (*)  4000         13.239       0.028598       0.005444       0.001036
+      (*)  8000         25.381       0.032826       0.005440       0.000902
+      (*) 16000         48.455       0.037522       0.005413       0.000781
+      (*) 32000         94.548       0.043837       0.005506       0.000691
+
+Cota subestimada: n^0.74
+Cota ajustada: n^0.94
+Cota sobreestimada: n^1.14
+
+Como podemos observar, t(n)/(Cota subestimada) tiende al infinito, t(n)/(Cota ajustada) tiene a una constante y t(n)/Cota sobreestimada tiende a 0.
+La complejidad del 1º algoritmo será n^2 y la del 2º n^0.94 (aun que verdaderamente sea n, si cogiésemos un n mayor podríamos ver como se estabiliza con esa cota) puesto que es la curva que más se aproxima a los tiempos medidos.
+
+La constante a la que tiende t(n)/(Cota ajustada) en SumaSubMax 1 es 0.00104 aproximadamente y en SumaSubMax 2 tiende a 0.0054 aproximadamente.
+
+Cuando la medición es menor de 500 ms, al ser más pequeña que el umbrar realizamos 1000 veces esa operación y hayamos la media, para que sea más precisa y tienda a ser más estable. (Cuando se realiza esto aparece un (*))
+
+Podemos concluir afirmando el algoritmo SumaSubMax 2 es mucho más eficiente que SumaSubMax 1.

@@ -1,0 +1,119 @@
+Título: Informe sobre práctica 2.
+
+Autores:
+	PEDRO GUIJAS BRAVO: p.guijas
+	EDUARDO PÉREZ FRAGUELA: eduardo.perez.fraguela
+
+Grupo: 3.3
+
+Fecha: 30/10/2019
+
+Introducción:
+  En este informe trataremos la práctica P2 de la asignatura de Algoritmos. Dicha práctica consiste en la elaboración de 2 algoritmos de ordenación. 
+  Los algoritmos fueron entregados en pseudocódigo, nosotros los pasamos a C, comprobamos que funcionasen y realizamos un breve análisis del rendimiento.
+  Para comprobar que funcionasen creamos la funcionón test. En dicho test probamos el funcionamiento de los dos algoritmos ayudandonos con una función externa ordenado(nos dice si se encuentra ordenado). También testeamos la inicialización de un vector ascendente, descendente y aleatorio
+
+Máquina:
+  Nombre: MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)
+  Procesador: Intel Core i5 2,3 GHz 
+  Memoria: 8 GB 2133 MHz LPDDR3
+  Gráficos: Intel Iris Plus Graphics 640 1536 MB
+  Sistema: macOS Mojave 10.14.6
+
+Para el análisis ejecutamos los 2 algoritmos con vectores de 500, 1000, 2000, 4000, 8000, 16000 y 32000 (7 mediciones, el doble que el anterior) elementos en orden ascendente, descendente y aleatorio. Medimos los tiempos de ejecución y hacemos una tabla (ejecutamos 3 veces para que sean resultados más estables), los tiempos están medidos en microsegundos (ms).
+
+Como podremos observar, t(n)/(Cota subestimada) tiende al infinito, t(n)/(Cota ajustada) tiene a una constante y t(n)/Cota sobreestimada tiende a 0.
+Cuando la medición es menor de 500 ms, al ser más pequeña que el umbral realizamos 1000 veces esa operación y hayamos la media, para que sea más precisa y tienda a ser más estable. (Cuando se realiza esto aparece un (*))
+
+Ordenacion por insercion con inicializacion ascendente
+              n           t(n)    t(n)/n^0.90    t(n)/n^1.00    t(n)/n^1.10
+      (*)   500          1.615       0.006013       0.003230       0.001735
+      (*)  1000          3.209       0.006403       0.003209       0.001608
+      (*)  2000          6.305       0.006742       0.003152       0.001474
+      (*)  4000         13.185       0.007555       0.003296       0.001438
+      (*)  8000         26.327       0.008084       0.003291       0.001340
+      (*) 16000         52.366       0.008617       0.003273       0.001243
+      (*) 32000        104.769       0.009238       0.003274       0.001160
+
+Cota subestimada: n^0.8
+Cota ajustada: n
+Cota sobreestimada: n^1.2
+t(n)/n^(1) tiende a una constante que se encuentra en: [0.003296,0.003152]
+
+Ordenacion por insercion con inicializacion descendente
+              n           t(n)    t(n)/n^1.80    t(n)/n^2.00    t(n)/n^2.20
+      (*)   500        284.788       0.003948       0.001139       0.000329
+           1000       1130.000       0.004499       0.001130       0.000284
+           2000       4480.000       0.005122       0.001120       0.000245
+           4000      17875.000       0.005869       0.001117       0.000213
+           8000      73310.000       0.006912       0.001145       0.000190
+          16000     288329.000       0.007807       0.001126       0.000162
+          32000    1156016.000       0.008989       0.001129       0.000142
+
+Cota subestimada: n^1.8
+Cota ajustada: n^2
+Cota sobreestimada: n^2.2
+t(n)/n^(2) tiende a una constante que se encuentra en: [0.001117,0.001145]
+
+Ordenacion por insercion con inicializacion desordenado(aleatorio)
+              n           t(n)     t(n)/n^1.8     t(n)/n^2.0     t(n)/n^2.2
+      (*)   500        149.777       0.002076       0.000599       0.000173
+           1000        581.000       0.002313       0.000581       0.000146
+           2000       2225.000       0.002544       0.000556       0.000122
+           4000       9047.000       0.002970       0.000565       0.000108
+           8000      36739.000       0.003464       0.000574       0.000095
+          16000     146576.000       0.003969       0.000573       0.000083
+          32000     586127.000       0.004557       0.000572       0.000072
+
+Cota subestimada: n^1.8
+Cota ajustada: n^2
+Cota sobreestimada: n^2.2
+t(n)/n^(2) tiende a una constante que se encuentra en: [0.000556,0.000599]
+
+Ordenacion shell con inicializacion ascendente
+              n           t(n)    t(n)/n^1.00    t(n)/n^1.14    t(n)/n^1.28
+      (*)   500         15.926       0.031852       0.013344       0.005590
+      (*)  1000         36.843       0.036843       0.014007       0.005325
+      (*)  2000         82.698       0.041349       0.014267       0.004922
+      (*)  4000        181.515       0.045379       0.014209       0.004449
+      (*)  8000        400.685       0.050086       0.014232       0.004044
+          16000        881.000       0.055063       0.014200       0.003662
+          32000       1890.000       0.059062       0.013823       0.003235
+
+Cota subestimada: n
+Cota ajustada: n^1.14
+Cota sobreestimada: n^1.28
+t(n)/n^(1.14) tiende a una constante que se encuentra en: [0.013344,0.014267]
+
+Ordenacion shell con inicializacion descendente
+              n           t(n)    t(n)/n^1.00    t(n)/n^1.15    t(n)/n^1.30
+      (*)   500         23.034       0.046068       0.018137       0.046068
+      (*)  1000         53.538       0.053538       0.018996       0.053538
+      (*)  2000        117.915       0.058958       0.018853       0.058958
+      (*)  4000        257.516       0.064379       0.018554       0.064379
+           8000        567.000       0.070875       0.018409       0.070875
+          16000       1232.000       0.077000       0.018025       0.077000
+          32000       2620.000       0.081875       0.017273       0.081875
+
+Cota subestimada: n
+Cota ajustada: n^1.15
+Cota sobreestimada: n^1.30
+t(n)/n^(1.15) tiende a una constante que se encuentra en: [0.017273,0.018996]
+
+Ordenacion shell con inicializacion desordenado
+              n           t(n)    t(n)/n^1.00    t(n)/n^1.20    t(n)/n^1.40
+      (*)   500         56.666       0.113332       0.032701       0.113332
+      (*)  1000        126.341       0.126341       0.031735       0.126341
+      (*)  2000        293.626       0.146813       0.032104       0.146813
+           4000        689.000       0.172250       0.032790       0.172250
+           8000       1580.000       0.197500       0.032730       0.197500
+          16000       3576.000       0.223500       0.032244       0.223500
+          32000       8210.000       0.256563       0.032223       0.256563
+
+Cota subestimada: n
+Cota ajustada: n^1.19
+Cota sobreestimada: n^1.38
+t(n)/n^(1.16) tiende a una constante que se encuentra en: [0.031735,0.032701]
+
+Conclusión:
+  Podemos concluir afirmando que el algoritmo de ordenación shell es mucho más eficiente que el de ordenación por inserción. Cuando el vector se encuentra ordenado, el de inserción es más veloz, pero solo el un caso concreto, por lo que es preferible usar el de ordenación shell. Mirando el análisis del algoritmo shell puede observarse que el caso más desfavorable es que sean números aleatorios, cosa que no ocurre con el de inserción (cuyo caso mas desfavorable es la ordenada decreciente).

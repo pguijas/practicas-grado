@@ -1,0 +1,46 @@
+Título: Informe sobre práctica 4 de Algoritmos.
+
+Autores:
+  PEDRO GUIJAS BRAVO: p.guijas
+  EDUARDO PÉREZ FRAGUELA: eduardo.perez.fraguela
+
+Grupo: 3.3
+
+Fecha: 8/12/2019
+
+Introducción:
+  En este informe trataremos la práctica P4 de la asignatura de Algoritmos. Dicha práctica consiste en la implementación de un pseudocódigo que corresponde a una version generalizada del algoritmo de Dijkstra. 
+  Una vez implementado el algoritmo, comprobamos que funcione y realizamos un breve análisis del rendimiento.
+  Para comprobar que funcionen, creamos la funcionón test, en dicho test probamos el funcionamiento del algoritmo (comprobando que con 2 matrices de adyacencia ya dadas obtengamos la matriz de distancias minimas correcta). También testeamos la inicialización aleatoria.
+
+Máquina:
+  Nombre: MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)
+  Procesador: Intel Core i5 2,3 GHz 
+  Memoria: 8 GB 2133 MHz LPDDR3
+  Gráficos: Intel Iris Plus Graphics 640 1536 MB
+  Sistema: macOS Catalina 10.15.1
+
+Para demostrar empíricamente la complejidad de Dijkstra, mediremos los tiempos obtenidos con matrices de distinto tamaño y los dividiremos por su complejidad teórica (O(n)), de manera que si esta sucesión de divisiones tiende a ser estable el divisor será su complejidad.
+
+Para el análisis ejecutamos los algoritmos con matrices de adyacencia de 8, 16, 32, 64, 128, 256 y 512 (7 mediciones, el doble que el anterior) nodos. Medimos los tiempos de ejecución y hacemos una tabla (ejecutamos 3 veces para que sean resultados más estables), los tiempos están medidos en microsegundos (ms).
+
+Como podremos observar, t(n)/(Cota subestimada) tiende al infinito, t(n)/(Cota ajustada) tiene a una constante y t(n)/Cota sobreestimada tiende a 0.
+Cuando la medición es menor de 500 ms, al ser más pequeña que el umbral realizamos 1000 veces esa operación y hayamos la media, para que sea más precisa y tienda a ser más estable. (Cuando se realiza esto aparece un (*))
+
+Tiempos Dijktra:
+              n           t(n)    t(n)/n^2.60    t(n)/n^2.80    t(n)/n^3.00
+      (*)     8          6.435       0.028875       0.019050       0.012568
+      (*)    16         48.896       0.036188       0.020784       0.011938
+      (*)    32        341.817       0.041726       0.020863       0.010431
+             64       2319.000       0.046691       0.020323       0.008846
+            128      15313.000       0.050853       0.019270       0.007302
+            256     110871.000       0.060729       0.020033       0.006608
+            512     795294.000       0.071850       0.020633       0.005925
+Cota subestimada: n^2.60
+Cota ajustada: n^2.80
+Cota sobreestimada: n^3.00
+t(n)/n2.80 tiende a la constante 0.020 aproximadamente
+
+Conclusión:
+  Podemos concluir afirmando que la cota teórica y la calculada empíricamente no coinciden. La complejidad teorica de Dijkstra sería O(n^2) y para la generalizacion, que es la versión que implemetamos nosostros (que calcula las distancias minima de todos los nodos) es O(n^3). Nuestra cota ajustada es n^(2.8). Además como podemos observar en la tabla, n^3 es una cota lijeramente sobreestimada.
+
