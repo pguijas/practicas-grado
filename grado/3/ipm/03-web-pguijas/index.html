@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://kit.fontawesome.com/20cf61221c.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+        <title>PokeApi</title>
+    </head>
+    <body>
+        <div class="filters" role="toolbar" aria-expanded="false" aria-label="Filtros de Pokemons" aria-controls="contenido" lang="es">
+            <label class="filters_title" for="tipo_filter">Tipo de Pokemon:</label>
+            <select id="tipo_filter">
+                <option selected value="Cualquiera">Cargando...</option>
+            </select>
+            <label class="filters_title" for="gen_filter">Generación del Pokemon:</label>
+            <select id="gen_filter">
+                <option selected value="Cualquiera">Cargando...</option>
+            </select>
+            <div class="filter_buttons">
+                <button class="filter_reset">Limpiar</button>
+                <button class="filter_filter">Filtrar</button>
+            </div>
+        </div>
+        <header>
+            <button id = 'back' class="filters_btn hide" aria-hidden="true" aria-haspopup="true" aria-label="Go Back Button">
+                <i class='fa fa-arrow-left'></i>
+            </button>
+            <button id='filter' class="filters_btn" aria-hidden="false" aria-haspopup="true" aria-label="Filter Button">
+                <i class="fas fa-filter"></i>
+            </button>
+            <a href="/" class="logo" aria-hidden="false">PokeApi</a>
+            <button class="search_btn" aria-hidden="false" aria-haspopup="true" aria-label="Search Button">
+                <i class="fas fa-search"></i>
+            </button>
+            <input class="search_input hide_search" aria-hidden="true" aria-label="Enter the pokemon name to search" aria-controls="contenido" list="allpokemons" placeholder="Search">
+            <datalist id="allpokemons"></datalist>      
+        </header>
+        <main>
+            <div id="resultados" class='resultados hide' aria-atomic="true" aria-live="polite" aria-relevant="additions"></div>
+            <div id="contenido" role="list" class="contenido" aria-atomic="true" aria-live="polite" aria-relevant="additions"></div>
+        </main>
+        <button class="floating_btn"><i class="fas fa-angle-up"></i></button>
+        <script src="pokeapi.js"></script>
+    </body>
+</html>

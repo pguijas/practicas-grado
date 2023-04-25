@@ -1,0 +1,9 @@
+[submodule "Grado en Informatica/3/ri"]
+	path = Grado en Informatica/3/ri
+	url = https://github.com/pguijas/ri-2021
+[submodule "grado/3/ri"]
+	path = grado/3/ri
+	url = https://github.com/pguijas/ri-2021
+[submodule "grado/3/aa"]
+	path = grado/3/aa
+	url = https://github.com/pguijas/aa_2021

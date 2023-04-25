@@ -1,0 +1,607 @@
+*{
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+body{
+    background-color: white;
+    font-size: 100%;
+}
+
+header{
+    left: 0;
+    top:0;
+    background-color: #EA5455;
+    /*fixed nav bar*/    
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    
+    text-align: center;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.logo{
+    font-size: 1.857em;
+    color: #F6F6F6;
+    background-color: transparent;
+    display: inline-block;
+    padding: 10px 0;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 2px;
+}
+
+.logo:hover{
+    color: rgb(223, 223, 223);
+}
+
+.filters_btn, .search_btn{
+    border: none;
+    background-color: transparent;
+    color: #F6F6F6;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+}
+
+.filters_btn{ 
+    float: left;
+    margin-left: 20px;
+}
+
+.search_btn{  
+    float: right;
+
+    margin-right: 20px;
+}
+
+.search_btn:hover, .filters_btn:hover{
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.hide_left_btn{
+    opacity: 0;
+}
+
+.search_input{
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 50%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.hide_search{
+    opacity: 0;
+    display: none;
+}
+
+.search_input::placeholder{
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.filters{
+    padding-top: 50px;
+    position: fixed;
+    width: 50%;
+    height: 100vh;
+    background-color: #F6F6F6;
+    border-bottom: 1px solid grey;
+    left: -100%;
+    transition: all 0.2s;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.filters_shown{
+    left: 0;
+}
+
+.filters_title{
+    color: #2D4059;
+    display: block;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+select{
+    color: #2D4059;
+    display: block;
+    margin: 10px auto;
+    width: 75%;
+    height: 30px;
+    border: 1px solid #2D4059;
+    border-radius: 5px;
+
+}
+
+.filter_buttons{
+    background-color: pink;
+    margin: 30px auto;
+    width: 95%;
+
+}
+.filter_reset, .filter_filter{
+    display: inline-block;
+    width: 49%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.filter_reset{
+    float: left;
+}
+
+.filter_filter{
+    float: right;
+}
+
+.filter_reset, .filter_filter:hover{
+    border: 2px #2D4059 solid;
+    color: #2D4059 ;
+    background-color: white;
+}
+
+.filter_filter, .filter_reset:hover{
+    border: 2px #2D4059 solid;
+    background-color: #2D4059 ;
+    color: white ;
+}
+
+
+.contenido{
+    margin: auto;
+    background-color: transparent;
+    display: flex;
+	flex-wrap: wrap; /*cuando no entran en la linea los manda a una nueva*/
+    justify-content: center;
+    padding-top: 60px;
+    /*Le ponemos el tamaño de la pantalla para el scroll infinito*/
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    /*para dispositivos grandes no nos interesa que vean mas informacion*/
+    max-width: 1000px; 
+    
+}
+
+.hide{
+    opacity: 0;
+    display: none;
+    border: solid 20px  salmon;
+}
+
+
+
+.pokemonitem{
+    display: inline-block;
+    margin: 10px;
+    background-color: #F6F6F6;
+    text-align: center;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    /*
+    MUY IMPORTANTE -> si se cambia el tamaño del div debemos cambiarlo aquí,
+    las unidades vh nos alargan los elementos.
+    Estas unidades no se pueden reemplazar por otras dado que el scroll infinito solo funciona con ellas.
+    */
+    max-height: 270px;
+}
+
+.pokemonitem:hover{
+    background-color: rgb(221, 221, 221);
+    
+}
+
+.poke_img{
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin-top: 5px;
+}
+
+.no_poke_img{
+    display: block;
+    text-align: center;
+    color: grey;
+    font-size: 0.75em; /*12px*/
+    margin-top: 5px;
+    padding-top: 69px;
+    padding-bottom: 69px;
+    width: 150px;
+}
+
+.poke_id{
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.75em; /*12px*/
+    width: 50px;
+    padding: 1px;
+    border-radius: 7px;
+    margin-bottom: 5px;
+}
+
+.poke_name{
+    text-align: center;
+    color: #2D4059;
+    display: block;
+    margin: auto;
+    width: 100px;
+    font-size: 0.9375em; /*15px*/
+}
+
+.poke_type{
+    display: inline-block;
+    text-align: center;
+    font-size: 0.625em; /*10px*/
+    border-radius: 4px;
+    width: 50px;
+    height: 15px;
+    color: #F6F6F6;
+    margin-bottom: 10px;
+}
+
+.cargando{
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.poke_spinner{
+    width: 35px;
+    height: 35px;
+    animation: rotateBall 1.5s infinite forwards;
+}
+
+@keyframes rotateBall {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+@-webkit-keyframes rotateBall {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(70deg);
+    }
+    0% {
+      transform: rotate(360deg);
+    }
+  }
+
+.type_normal{
+    background-color: #A8A77A;
+}
+
+.type_fire{
+    background-color: #EE8130;
+}
+
+.type_water{
+    background-color: #6390F0;
+}
+
+.type_electric{
+    background-color: #F7D02C;
+}
+
+.type_grass{
+    background-color: #7AC74C;
+}
+
+.type_ice{
+    background-color: #96D9D6;
+}
+
+.type_fighting{
+    background-color: #C22E28;
+}
+
+.type_poison{
+    background-color: #A33EA1;
+}
+
+.type_ground{
+    background-color: #E2BF65;
+}
+
+.type_flying{
+    background-color: #A98FF3;
+}
+
+.type_psychic{
+    background-color: #F95587;
+}
+
+.type_bug{
+    background-color: #A6B91A;
+}
+.type_rock{
+    background-color: #B6A136;
+}
+
+.type_ghost{
+    background-color: #735797;
+}
+
+.type_dragon{
+    background-color: #6F35FC;
+}
+
+.type_dark{
+    background-color: #705746;
+}
+.type_steel{
+    background-color: #B7B7CE;
+}
+.type_fairy{
+    background-color: #D685AD;
+}
+
+.floating_btn{
+    background-color: #FFB400;
+    font-size: 1.375em; /*22px*/
+    color: #F6F6F6;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.25s;
+    outline: none;
+  }
+
+.floating_btn:active{
+    background-color: #2D4059;
+}
+
+.error{
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: gray;
+    margin: 20px;
+    width: 100%;
+}
+
+.resultados{
+    margin: auto;
+    text-align: center; 
+    padding-top: 50px;
+}
+
+.result_image{
+    background-color: #F6F6F6;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 25px;
+    width: 70vw;
+    height: 70vw;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.result_no_image_text{
+    display: block;
+    color: grey;
+    margin: 45% auto;
+}
+
+.name_result{
+    display: block;
+    color:#2D4059;
+    text-align: center;
+    font-size: 1.5625em; /*25px*/
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.id_result{
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.75em; /*12px*/
+    width: 50px;
+    padding: 4px;
+    border-radius: 7px;
+    margin-top: 7px;
+}
+
+.type_result, .descrpt_result{
+    margin: auto;
+    margin-top: 10px;
+    width: 70vw;
+    padding: 0px 25px;
+    border-radius: 25px;
+    border: 2px solid #FFB400; 
+    max-width: 500px;
+    max-height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15);
+}
+
+.type_title_result, .descpt_title_result{
+    display: block;
+    color:  #2D4059;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.types_result{
+    padding: 7px 5px 7px 5px;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 4px;
+    width: 65px;
+    margin: 5px;
+    margin-bottom: 10px;
+    color: #F6F6F6;
+}
+
+
+.info_hwb_result, .stats_result{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15);
+    text-align: center;
+    margin: 20px auto;
+    background:#FFB400; 
+    border-radius: 10px;
+    
+    width: 70vw;
+    padding: 0px 25px;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+table.tInfo{
+    width: 100%;
+    text-align: center;
+}
+
+th.headInfo{
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+td.dInfo{
+    color:  #2D4059;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.descpt_text_result{ 
+    margin-top: 5px;
+    font-size: 0.875em; /*14px*/
+}
+
+.stats_title_result{
+    display: block;
+    padding: 14px;
+    color: black;
+}
+
+.stats_result{
+    padding-bottom: 15px;
+}
+
+.stat_result{
+    text-align: left;
+    color: black;
+    width:100%;
+    font-size: small;
+    font-weight: bolder;   
+}
+
+.stat_pro_ext_result{
+    display: block;
+    width: 180px;
+    padding: 4px;
+    background: #2D4059;
+    border-radius: 100px;
+}
+
+.stat_pro_int_result{  
+    display: block;
+    border-radius: 100px;
+    background: #FFF;
+    min-width: 15px;
+  } 
+
+.stat_value_result{
+    font-size: x-small;
+    font-weight:bolder;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/*Tamaños muy pequeños*/
+@media (max-width:330px){
+    .search_input{
+        width: 40%;
+    }
+
+    .filters_btn, .search_btn{
+        width: 50px;
+        margin: 0;
+    }
+
+    /*arreglar las tablass resultados*/
+    
+    .stat_pro_ext_result{
+        width: 100px;
+        overflow: hidden;
+    }
+
+    th.headInfo{
+        padding-left: 5px;
+        padding-right: 5px;
+        
+    }
+}
+
+
+/*Tamaños pequeños*/
+/*
+    Lo programamos para estas resoluciones
+*/
+
+/*Tamaños medianos*/
+@media (min-width:768px){
+    .search_btn{
+        display: none;
+    }
+
+    .search_input{
+        float: right;
+        margin-right: 20px;
+        width: 180px;
+    }
+
+    /*compensamos lo que ocupa de mas el input con un padding  
+    en el lado contrario para que se centr*/
+    .logo{
+         padding-left: 120px;
+     }
+
+    .hide_search{
+        opacity: 100;
+        display: inline-block;
+    }
+}
+
+/*Tamaños grandes*/
+@media (min-width:1024px){
+    .search_input{
+        width: 220px;
+    }
+
+    .logo{
+         padding-left: 160px;
+     }
+
+    /*
+        tamaño del contenido es gestionado con un max-with
+        Destacar que desde el principio se intentó hacer una lista de items lo mas flexible posible
+    */
+  
+}

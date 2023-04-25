@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-27 13:40+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: model.py:11
+msgid "do"
+msgstr ""
+
+#: model.py:11
+msgid "do♯/re♭"
+msgstr ""
+
+#: model.py:11
+msgid "re"
+msgstr ""
+
+#: model.py:11
+msgid "re♯/mi♭"
+msgstr ""
+
+#: model.py:11
+msgid "mi"
+msgstr ""
+
+#: model.py:11
+msgid "fa"
+msgstr ""
+
+#: model.py:11
+msgid "fa♯/sol♭"
+msgstr ""
+
+#: model.py:11
+msgid "sol"
+msgstr ""
+
+#: model.py:11
+msgid "sol♯/la♭"
+msgstr ""
+
+#: model.py:11
+msgid "la"
+msgstr ""
+
+#: model.py:11
+msgid "la♯/si♭"
+msgstr ""
+
+#: model.py:11
+msgid "si"
+msgstr ""
+
+#: model.py:32
+msgid "Ascendente"
+msgstr ""
+
+#: model.py:32
+msgid "Descedente"
+msgstr ""
+
+#: model.py:44 model.py:67
+msgid "El recurso solicitado no se encuentra"
+msgstr ""
+
+#: model.py:49 model.py:72
+msgid "No se puede conectar al servidor"
+msgstr ""
+
+#: model.py:52 model.py:54 model.py:75 model.py:77
+msgid "Algo ha ido mal :("
+msgstr ""
+
+#: view.py:47
+msgid "Intervalos Musicales"
+msgstr ""
+
+#: view.py:59 view.py:96
+msgid "Seleccione el intervalo"
+msgstr ""
+
+#: view.py:75 view.py:105
+msgid "Buscar"
+msgstr ""
+
+#: view.py:117
+msgid "Ejemplo de intervalo desde"
+msgstr ""
+
+#: view.py:127
+msgid "do - re"
+msgstr ""
