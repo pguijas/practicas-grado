@@ -1,0 +1,19 @@
+
+#
+# w wI tal que w en {a,b}*
+#
+
+# símbolos no terminales
+S;
+
+# símbolos terminales
+a b;
+
+# símbolo inicial
+S;
+
+# reglas
+S -> a S a
+  |  b S b
+  |  epsilon;
+

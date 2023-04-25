@@ -1,0 +1,7 @@
+
+#
+# Ejemplo de una expresión regular.
+#
+
+a.(b|c)*
+

@@ -1,0 +1,25 @@
+
+#
+# Ejemplo de un automata finito con epsilon transiciones
+#
+
+# Estados
+0 1 2 3;
+
+# Terminales
+a b c;
+
+# Estado inicial
+0;
+
+# Estados finales
+1 3;
+
+# Transiciones
+0 1 a;
+1 1 b;
+1 2 a;
+2 0 epsilon;
+2 3 epsilon;
+2 3 c;
+

@@ -1,0 +1,27 @@
+
+#
+# Ejemplo de un autómata de pila que acepta { a^n b^n | n >= 1 }
+#
+
+# Estados
+0 1 2 3;
+
+# Símbolos de entrada
+a b;
+
+# Simbolos de pila
+zeta A;
+
+# Estado inicial
+0;
+
+# Estados finales
+3;
+
+# Transiciones
+0 1 a zeta A zeta;
+1 1 a A A A;
+1 2 b A epsilon;
+2 2 b A epsilon;
+2 3 epsilon zeta zeta;
+

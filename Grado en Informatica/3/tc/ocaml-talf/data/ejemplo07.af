@@ -1,0 +1,33 @@
+
+#
+# Ejemplo de automata finito determinista y completo
+# Acepta el lenguaje sobre {0, 1} formado por todas las cadenas que corresponden
+# a representaciones binarias de los multilplos de cinco
+#
+
+# Estados
+inicio mod_0 mod_1 mod_2 mod_3 mod_4;
+
+# Terminales
+0 1;
+
+# Estado inicial
+inicio;
+
+# Estados finales
+mod_0;
+
+# Transiciones
+inicio mod_0 0;
+inicio mod_1 1;
+mod_0 mod_0 0;
+mod_0 mod_1 1;
+mod_1 mod_2 0;
+mod_1 mod_3 1;
+mod_2 mod_4 0;
+mod_2 mod_0 1;
+mod_3 mod_1 0;
+mod_3 mod_2 1;
+mod_4 mod_3 0;
+mod_4 mod_4 1;
+

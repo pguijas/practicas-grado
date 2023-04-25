@@ -1,0 +1,29 @@
+
+#
+# Ejemplo de un autómata de pila que acepta {w wI tal que w en {a,b}*}
+#
+
+# Estados
+0 1 2;
+
+# Símbolos de entrada
+a b;
+
+# Símbolos de pila
+zeta S;
+
+# Estado inicial
+0;
+
+# Estados finales
+2;
+
+# Transiciones
+0 1 epsilon zeta S zeta;
+1 1 a a epsilon;
+1 1 b b epsilon;
+1 1 epsilon S a S a;
+1 1 epsilon S b S b;
+1 1 epsilon S epsilon;
+1 2 epsilon zeta zeta;
+

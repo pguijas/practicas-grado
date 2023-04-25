@@ -1,0 +1,3 @@
+Alumno 1 : Sergio Piñeiro Bermúdez. Funcionalidades 1 y 3
+Alumno 2 : Adrián Nieto Antelo. Funcionalidades 4 y 5
+Alumno 3 : Pedro Guijas Bravo. Funcionalidades 2 y 6

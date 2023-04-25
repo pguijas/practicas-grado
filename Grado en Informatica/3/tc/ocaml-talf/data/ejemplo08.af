@@ -1,0 +1,32 @@
+
+#
+# Ejemplo de automata finito
+# Buen candidato para aplicar el algoritmo de minimizacion de Hopcroft
+#
+
+# Estados
+1 2 3 4 5 6;
+
+# Terminales
+a b;
+
+# Etsado incial
+1;
+
+# Estados finales
+5 6;
+
+# Transiciones
+1 2 a;
+1 1 b;
+2 3 a;
+2 4 b;
+3 6 a;
+3 4 b;
+4 5 a;
+4 1 b;
+5 3 a;
+5 4 b;
+6 6 a;
+6 4 b;
+

@@ -1,0 +1,23 @@
+O SN SV SP Det N Np Pro V P;
+
+el la un una
+chico hombre manzana parque telescopio
+a con de en
+come juega veo
+Juan Miguel Luis
+yo;
+
+O;
+
+O -> SN SV | SV;
+SN -> Det N | Det N SP | Np | Pro;
+SV -> V | V SN | V SP | V SN SP;
+SP -> P SN;
+Det -> el | la | un | una;
+N -> chico | hombre | manzana | parque | telescopio;
+P -> a | con | de | en;
+V -> come | juega | veo;
+Np -> Juan | Miguel | Luis;
+Pro -> yo;
+
+

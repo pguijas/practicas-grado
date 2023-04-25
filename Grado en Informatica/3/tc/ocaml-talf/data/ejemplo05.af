@@ -1,0 +1,30 @@
+
+#
+# Ejemplo de un automata finito determinista y completo
+# Acepta el lenguaje sobre {a, b} formado por todas las cadenas que contienen abab
+#
+
+# Estados
+0 1 2 3 4;
+
+# Terminales
+a b;
+
+# Estado inicial
+0;
+
+# Estados finales
+4;
+
+# Transiciones
+0 1 a;
+0 0 b;
+1 1 a;
+1 2 b;
+2 3 a;
+2 0 b;
+3 1 a;
+3 4 b;
+4 4 a;
+4 4 b;
+

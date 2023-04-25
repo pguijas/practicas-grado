@@ -1,0 +1,53 @@
+mvn sql:execute install
+
+#Añadir Carrera
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 1' 'A Coruña' '2021-08-15T11:00' '10Km. Campus Elviña' 10 2"     #Carrera id=1 creada
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 2' 'Santiago' '2021-08-25T11:00' '5Km. Plaza Obradoiro' 5 100"   #Carrera id=2 creada
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 3' 'A Coruña' '2021-10-15T11:00' '7Km. Playa Riazor' 7 200"      #Carrera id=3 creada
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 4' 'A Coruña' '2021-10-25T11:00' '20Km. Obelisco' 20 300"        #Carrera id=4 creada
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 5' 'A Coruña' '2020-08-14T11:00' '10Km. Torre Hércules' 10 100" #Falla (fecha inválida)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 6' 'A Coruña' '2021-08-14T11:00' '10Km. Torre Hércules' -2 100" #Falla (precio inválido)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 7' 'A Coruña' '2021-08-14T11:00' '10Km. Torre Hércules' 10 0"   #Falla (participantes inválidos)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 8' ' ' '2021-08-14T11:00' '10Km. Torre Hércules' 10 100"        #Falla (ciudad inválida)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-addRace 'Carrera 9' 'A Coruña' '2021-08-14T11:00' ' ' 10 1000"                   #Falla (descripción inválida)
+
+#Dar por finalizada una carrera
+mysql -u ws --password=ws
+use ws
+UPDATE Run SET startDate='2020-11-25 10:00' WHERE runId=4;
+
+#Buscar por ciudad / fecha
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRaces 2021-12-15 'A Coruña'" #Encuentra la carrera con id=1 (plazas libres = 2) y la carrera con id=3 (plazas libres = 200)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRaces 2021-08-31 'A Coruña'" #Encuntra la carrera con id=1 (plazas libres = 2)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRaces 2021-07-31 'Santiago'" #No encuentra nada
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRaces 2020-06-24 'Santiago'"        #Falla fecha incorrecta
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRaces 2021-08-31 ' '"        #Falla porque la ciudad es obligatoria
+
+#Inscribirse en una carrera
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user1@udc.es' 1 '0123456789111111'" #regId=1 creado
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user2@udc.es' 1 '0123456789222222'" #regId=2 creado
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user2@udc.es' 2 '0123456789222222'" #regId=3 creado
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user1@udc.es' 2 '0123456789111111'" #regId=4 creado
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user3@udc.es' 1 '0123456789333333'" #Falla (no hay plazas)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user3@udc.es' 4 '0123456789333333'" #Falla (fuera de plazo)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user1@udc.es' 2 '0123456789111111'" #Falla (usuario ya inscrito)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user4' 2 '0123456789444444'"        #Falla (email inválido)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user4@udc.es' 2 '0123456789'"       #Falla (tarjeta inválida)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-register 'user4@udc.es' 9 '0123456789444444'" #Falla (carrera no existe)
+
+#Buscar Registros
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRegisters 'user1@udc.es'"    #Devuelve inscripciones con id 1 (dorsal=1) e id 4 (dorsal=2) si se ejecutó el paso 4a o con id 1 si se ejecutó el 4b
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRegisters 'user6@udc.es'" #Lista vacía
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRegisters 'user1'"        #Falla (email inválido)
+
+#Pick Dorsal
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-deliverNumber 1 '0123456789222222'" #Falla (tarjeta no coincide)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-deliverNumber 1 '0123456789111111'" #Dorsal entregado
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-deliverNumber 1 '0123456789111111'" #Falla (ya entregado)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-deliverNumber 1 '0123456789'"       #Falla (tarjeta inválida)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-deliverNumber 9 '0123456789111111'" #Falla (inscripción no existe)
+
+#Buscar Carreras por Id
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRace 2" #Plazas libres=98 (si se ejecutó el paso 4a) o 100 (si se ejecutó el 4b)
+mvn exec:java -Dexec.mainClass="es.udc.ws.ficrun.client.ui.RunServiceClient" -Dexec.args="-findRace 9" #Falla (no se encuentra)

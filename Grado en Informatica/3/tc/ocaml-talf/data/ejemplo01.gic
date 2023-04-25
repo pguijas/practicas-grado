@@ -1,0 +1,23 @@
+
+#
+# Ejemplo de gramática regular.
+#
+
+# símbolos no terminales
+S A B;
+
+# símbolos terminales
+a b c;
+
+# símbolo inicial
+S;
+
+# reglas
+S -> a A;
+
+A -> a b c A 
+   | b B;
+
+B -> b c B 
+   | epsilon;
+

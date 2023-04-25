@@ -1,0 +1,30 @@
+
+#
+# Ejemplo de un automoata finito determinista y completo
+# Acepta el lenguaje sobre {a, b} formado por todas las cadenas
+# en las que cada a aparece entre dos bes
+#
+#
+
+# Estados
+0 1 2 3;
+
+# Terminales
+a b;
+
+# Estado inicial
+0;
+
+# Estados finales
+0 1;
+
+# Transiciones
+0 3 a;
+0 1 b;
+1 2 a;
+1 1 b;
+2 3 a;
+2 1 b;
+3 3 a;
+3 3 b;
+

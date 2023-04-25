@@ -1,0 +1,32 @@
+
+#
+# Ejemplo de automata finito determinista y completo
+# Acepta el lenguaje sobre {a, b} formado por todas las cadenas que
+# tienen numero impar de aes y numero par de bes
+#
+
+# Estados
+par_a_par_b
+par_a_impar_b
+impar_a_par_b
+impar_a_impar_b;
+
+# Terminales
+a b;
+
+# Estado incial
+par_a_par_b;
+
+# Estados finales
+impar_a_par_b;
+
+# Transiciones
+par_a_par_b      impar_a_par_b    a; 
+par_a_par_b      par_a_impar_b    b;
+par_a_impar_b    impar_a_impar_b  a;
+par_a_impar_b    par_a_par_b      b;
+impar_a_par_b    par_a_par_b      a;
+impar_a_par_b    impar_a_impar_b  b;
+impar_a_impar_b  par_a_impar_b    a;
+impar_a_impar_b  impar_a_par_b    b;
+

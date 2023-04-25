@@ -1,0 +1,25 @@
+
+#
+# Ejemplo de un automata finito determinista y completo
+#
+
+# Estados
+0 1 2;
+
+# Terminales
+a b;
+
+# Estado inicial
+0;
+
+# Estados finales
+0;
+
+# Transiciones
+0 1 a;
+0 2 b;
+1 2 a;
+1 0 b;
+2 2 a;
+2 2 b;
+
