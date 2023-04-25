@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Accion.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DS-33-02-PD&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">e2</a> &gt; <span class="el_source">Accion.java</span></div><h1>Accion.java</h1><pre class="source lang-java linenums">package e2;
+
+import java.util.Observable;
+
+/*
+ * @author pguijas
+ * 
+ * Comunicación Cliente-Acción: Patrón Observador
+ *
+ */
+
+public class Accion extends Observable{
+    
+    private final String simbolo;
+    private int cierre, max, min, volumen;
+    
+<span class="fc" id="L17">    public Accion(String simbolo, int cierre, int max, int min, int volumen) {</span>
+<span class="fc" id="L18">        this.simbolo = simbolo;</span>
+<span class="fc" id="L19">        this.cierre = cierre;</span>
+<span class="fc" id="L20">        this.max = max;</span>
+<span class="fc" id="L21">        this.min = min;</span>
+<span class="fc" id="L22">        this.volumen = volumen;</span>
+<span class="fc" id="L23">    }</span>
+
+    //Geters
+    public String getSimbolo() {
+<span class="fc" id="L27">        return simbolo;</span>
+    }
+
+    public int getCierre() {
+<span class="fc" id="L31">        return cierre;</span>
+    }
+                   
+    public int getMax() {
+<span class="fc" id="L35">        return max;</span>
+    }
+
+    public int getMin() {
+<span class="fc" id="L39">        return min;</span>
+    }
+
+    public int getVolumen() {
+<span class="fc" id="L43">        return volumen;</span>
+    }
+    
+    public void setCierre(int cierre) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (cierre!=this.cierre) {</span>
+<span class="fc" id="L48">           this.cierre = cierre;</span>
+<span class="fc" id="L49">           this.setChanged();</span>
+<span class="fc" id="L50">           notifyObservers(&quot;cierre&quot;);           </span>
+        }
+<span class="fc" id="L52">    }</span>
+
+    public void setMax(int max) {
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">        if (max!=this.max) { </span>
+<span class="fc" id="L56">            this.max = max;  </span>
+<span class="fc" id="L57">            this.setChanged();</span>
+<span class="fc" id="L58">            notifyObservers(&quot;max&quot;);</span>
+        }
+        
+<span class="fc" id="L61">    }</span>
+
+    public void setMin(int min) {
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if (min!=this.min) {</span>
+<span class="fc" id="L65">            this.min = min;</span>
+<span class="fc" id="L66">            this.setChanged();</span>
+<span class="fc" id="L67">            notifyObservers(&quot;min&quot;);          </span>
+        }
+<span class="fc" id="L69">    }</span>
+
+    public void setVolumen(int volumen) {
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (volumen!=this.volumen) {</span>
+<span class="fc" id="L73">            this.volumen = volumen;</span>
+<span class="fc" id="L74">            this.setChanged();</span>
+<span class="fc" id="L75">            notifyObservers(&quot;volumen&quot;);         </span>
+        }
+<span class="fc" id="L77">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

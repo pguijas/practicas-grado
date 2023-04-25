@@ -2,13 +2,13 @@
 
 En este curso se han cursado las siguientes asignaturas:
 
-* **Algoritmos**
+* **[Algoritmos](algo)**
 * **Estructura de Computadores**
-* **Paradigmas de Programación**
-* **Diseño Software**
-* **Sistemas Operativos**
-* **Bases de Datos**
-* **Redes**
-* **Concurrencia y Paralelismo**
-* **Proceso Software**
+* **[Paradigmas de Programación](pp)**
+* **[Diseño Software](ds)**
+* **[Sistemas Operativos](so)**
+* **[Bases de Datos](bd)**
+* **[Redes](redes)**
+* **[Concurrencia y Paralelismo](cp)**
+* **[Proceso Software](ps)**
 * **Sistemas Inteligentes**

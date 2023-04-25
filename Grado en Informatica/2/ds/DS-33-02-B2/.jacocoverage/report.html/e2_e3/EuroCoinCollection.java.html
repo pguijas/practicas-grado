@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EuroCoinCollection.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DS-33-02-B2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">e2_e3</a> &gt; <span class="el_source">EuroCoinCollection.java</span></div><h1>EuroCoinCollection.java</h1><pre class="source lang-java linenums">package e2_e3;
+
+import java.util.*;
+    
+    //poner enum en la mierda que hizo roque
+
+<span class="fc" id="L7">public class EuroCoinCollection implements Iterable&lt;EuroCoin&gt;{</span>
+    
+<span class="fc" id="L9">    private ArrayList&lt;EuroCoin&gt; collection = new ArrayList&lt;EuroCoin&gt;();</span>
+<span class="fc" id="L10">    private paises pais_it = null;</span>
+<span class="fc" id="L11">    private int cambios = 0;</span>
+
+    // Mira si la moneda está en la colección
+    public boolean hasCoin(EuroCoin coin) {
+<span class="fc" id="L15">        return collection.contains(coin);</span>
+    }
+   
+    // Inserta una moneda si no está en la coleccion devuelve true si, y solo si la inserta
+    // Para nosotros dos monedas con igual  pais, vn y diseño son iguales. 
+    public boolean insertCoin(EuroCoin coin) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (hasCoin(coin)) {</span>
+<span class="fc" id="L22">            return false;</span>
+        } else {
+<span class="fc" id="L24">            cambios++;</span>
+<span class="fc" id="L25">            return collection.add(coin);</span>
+        }
+    }
+
+    // Devuelve el valor de la colección
+    public int value() {
+<span class="fc" id="L31">        int valor = 0;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (EuroCoin moneda : collection) { //recorremos la colección sumando sus valores nominales</span>
+<span class="fc" id="L33">            valor = valor + moneda.getTipo_moneda().getValorNominal();</span>
+<span class="fc" id="L34">        }</span>
+<span class="fc" id="L35">        return valor;</span>
+    }
+
+    // Devuelve el tamaño de la colección
+    public int numCoins() {
+<span class="fc" id="L40">        return collection.size();</span>
+    }
+
+    // Borra la moneda (sin tener en cuenta el año)
+    public void removeCoin(EuroCoin coin) {
+<span class="fc" id="L45">        cambios++;</span>
+<span class="fc" id="L46">        collection.remove(coin);</span>
+<span class="fc" id="L47">    }</span>
+
+    //Ordena orden naturas
+    public void sort(){
+<span class="fc" id="L51">        cambios++;</span>
+<span class="fc" id="L52">        Collections.sort(collection);</span>
+<span class="fc" id="L53">    }</span>
+    
+    //Ordena con determinado comparador
+    public void sort(Comparator c){
+<span class="fc" id="L57">        cambios++;</span>
+<span class="fc" id="L58">        Collections.sort(collection, c);</span>
+<span class="fc" id="L59">    }</span>
+    
+    @Override //sobreescribimos metodo iterator para poder iterar la colección
+    public Iterator&lt;EuroCoin&gt; iterator() {
+<span class="fc" id="L63">        return new EuroCoinCollectionIterator(this, collection, pais_it, cambios);</span>
+    }
+
+    //Seters    
+    public void setPais_it(paises pais_it) {
+<span class="fc" id="L68">        this.pais_it = pais_it;</span>
+<span class="fc" id="L69">    }</span>
+
+    public int getCambios() {
+<span class="fc" id="L72">        return cambios;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
