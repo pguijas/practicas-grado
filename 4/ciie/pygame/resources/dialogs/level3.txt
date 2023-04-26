@@ -1,0 +1,2 @@
+ | Has desbloqueado otra arma.
+ | Pulsa '3' para equiparte con la ametralladora ligera.

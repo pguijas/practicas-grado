@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - crosshair
+  - schutzstaffel_b
+  - wehrmacht_b
+  - Rute1
+  - short_text
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Weapon
+  - Water
+  - UI
+  - Enemies
+  - Obstacles
+  - Player
+  - Shooting
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

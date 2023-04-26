@@ -1,0 +1,2 @@
+ | Has desbloqueado una nueva arma.
+ | Pulsa '2' para equipar el fusil de asalto y '1' para volver a la pistola.
