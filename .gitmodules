@@ -10,3 +10,9 @@
 [submodule "grado/4/tfg"]
 	path = grado/4/tfg
 	url = https://github.com/pguijas/federated_learning_p2p
+[submodule "grado/4/ciie/pygame"]
+	path = grado/4/ciie/pygame
+	url = https://github.com/hectorpadin1/FICGames.git
+[submodule "grado/4/ciie/unity"]
+	path = grado/4/ciie/unity
+	url = https://github.com/pguijas/FICGames.git
