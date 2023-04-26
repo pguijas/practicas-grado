@@ -1,9 +1,0 @@
-Anacleto | He conseguido infiltrarme en los alrededores de una base 
-Anacleto | militar, por aquí debe de estar mi código...
-Anacleto | ...
- | (Se empiezan a escuchar sirenas de alarma)
-Anacleto | Vaya, parece que voy a tener problemas...
----------Instrucciones---------  | Coge esa caja de munición y carga tu arma.
----------Instrucciones---------  | Recarga con la 'R' y utiliza el click izquierdo del ratón para disparar.
----------Instrucciones---------  | Hay más cajas de munición y salud por el mapa, pero ten cuidado
----------Instrucciones---------  | están bien vigiladas.
