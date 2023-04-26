@@ -1,13 +1,13 @@
-[submodule "grado/3/aa"]
+[submodule "3/aa"]
 	path = 3/aa
 	url = https://github.com/pguijas/aa_2021
-[submodule "grado/4/tfg"]
+[submodule "4/tfg"]
 	path = 4/tfg
 	url = https://github.com/pguijas/federated_learning_p2p
-[submodule "grado/4/ciie/pygame"]
+[submodule "4/ciie/pygame"]
 	path = 4/ciie/pygame
 	url = https://github.com/hectorpadin1/FICGames.git
-[submodule "grado/4/ciie/unity"]
+[submodule "4/ciie/unity"]
 	path = 4/ciie/unity
 	url = https://github.com/pguijas/FICGames.git
 [submodule "4/dlp"]
